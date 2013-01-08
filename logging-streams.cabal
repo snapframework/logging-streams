@@ -19,10 +19,8 @@ Library
                      -fno-warn-unused-do-bind
   ghc-prof-options:  -prof -auto-all
 
-  Exposed-modules:   System.IO.Streams.Logging,
-                     System.IO.Streams.Logging.Deferred,
+  Exposed-modules:   System.IO.Streams.Logging.Deferred,
                      System.IO.Streams.Logging.File,
-                     System.IO.Streams.Logging.Handle,
                      System.IO.Streams.Logging.Types
 
   Build-depends:     base          >= 4     && <5,

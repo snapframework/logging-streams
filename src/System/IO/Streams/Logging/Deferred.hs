@@ -1,4 +1,4 @@
-module System.IO.Streams.Logger.Deferred
+module System.IO.Streams.Logging.Deferred
   ( DeferredLogger
   , makeDeferredLogger
   , stopDeferredLogger
@@ -7,7 +7,9 @@ module System.IO.Streams.Logger.Deferred
 ------------------------------------------------------------------------------
 import           Blaze.ByteString.Builder                 (Builder)
 import qualified Blaze.ByteString.Builder                 as B
-import           Control.Concurrent.MVar (newEmptyMVar, MVar, newMVar)
+import           Control.Concurrent                       (ThreadId)
+import           Control.Concurrent.MVar                  (MVar, newEmptyMVar,
+                                                           newMVar, readMVar)
 import           System.IO.Streams                        (OutputStream)
 import qualified System.IO.Streams                        as Streams
 ------------------------------------------------------------------------------
@@ -29,4 +31,11 @@ makeDeferredLogger wrappedLogger = do
     (LoggerState output reset onerror) <- readMVar $ unLogger wrappedLogger
 
     newLogger <- newMVar $! LoggerState output (wrapReset reset) onerror
-    
+    undefined
+
+  where
+    wrapReset = undefined
+
+
+stopDeferredLogger :: Logger -> IO ()
+stopDeferredLogger _ = undefined
